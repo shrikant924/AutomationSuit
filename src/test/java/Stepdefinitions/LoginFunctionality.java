@@ -18,7 +18,7 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.time.Duration;
 
-public class LoginFunctionality extends  BaseTest{
+public class LoginFunctionality extends BaseTest {
 
     @Before
     public void setup() throws IOException {

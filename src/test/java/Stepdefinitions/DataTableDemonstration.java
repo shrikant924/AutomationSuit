@@ -2,8 +2,10 @@ package Stepdefinitions;
 
 import Core.BaseTest;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.aspectj.lang.annotation.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -15,9 +17,6 @@ import java.util.Map;
 
 public class DataTableDemonstration extends BaseTest {
 
-    public void setup() throws IOException {
-        super.setup();
-    }
 
     @Given("User should be on Data Entry page")
     public void userShouldBeOnDataEntryPage() {
