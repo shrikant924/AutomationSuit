@@ -3,6 +3,7 @@ package Core;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -23,7 +24,12 @@ public class ThreadLocalDriver {
     public static void setThreadLocalDriver(WebDriver driver) throws IOException {
         if (broserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
-            ThreadLocalDriver.driver.set(new ChromeDriver());
+            ChromeOptions opt = new ChromeOptions();
+            opt.addArguments("user-data-dir=C:\\Users\\shrikantl\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 2");
+            opt.addArguments("disable-infobars");
+            opt.addArguments("--start-maximized");
+            opt.addArguments("executable_path=C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+            ThreadLocalDriver.driver.set(new ChromeDriver(opt));
         } else if (broserName.equalsIgnoreCase("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             ThreadLocalDriver.driver.set(new FirefoxDriver());

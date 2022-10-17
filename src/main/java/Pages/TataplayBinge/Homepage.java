@@ -92,5 +92,11 @@ public class Homepage {
         return heroBannerImg;
     }
 
+    @FindAll(@FindBy(xpath = "(//span/li/div/img)[1]"))
+    private static WebElement asset;
+
+    public static WebElement asset(){
+        return asset;
+    }
 
 }

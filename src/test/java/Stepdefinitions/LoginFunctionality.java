@@ -18,20 +18,11 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.time.Duration;
 
-public class LoginFunctionality extends BaseTest {
-
-    Wait wait;
-    JavascriptExecutor js;
-    Actions actions;
-
+public class LoginFunctionality extends  BaseTest{
 
     @Before
     public void setup() throws IOException {
         super.setup();
-        wait = new WebDriverWait(driver, 30);
-        actions = new Actions(driver);
-        js = (JavascriptExecutor) driver;
-
     }
 
     @Given("user should be on login page")
@@ -42,7 +33,7 @@ public class LoginFunctionality extends BaseTest {
             try {
                 if (Homepage.notNow() != null) {
                     wait.until(ExpectedConditions.elementToBeClickable(Homepage.notNow()));
-                    js.executeScript("arguments[0].click();", Homepage.notNow());
+                    jse.executeScript("arguments[0].click();", Homepage.notNow());
                     System.out.println("CLicked on not now CTA");
                 } else {
                     wait.until(ExpectedConditions.elementToBeClickable(Homepage.doItLater()));
@@ -54,11 +45,11 @@ public class LoginFunctionality extends BaseTest {
 
         }
         wait.until(ExpectedConditions.elementToBeClickable(Homepage.profileIcon()));
-        js.executeScript("arguments[0].click();", Homepage.profileIcon());
+        jse.executeScript("arguments[0].click();", Homepage.profileIcon());
 
 
         wait.until(ExpectedConditions.elementToBeClickable(Homepage.loginCTA()));
-        js.executeScript("arguments[0].click();", Homepage.loginCTA());
+        jse.executeScript("arguments[0].click();", Homepage.loginCTA());
 
 
     }
@@ -76,14 +67,13 @@ public class LoginFunctionality extends BaseTest {
     @And("verify user is logged in successfully <{string}>")
     public void verify_user_is_logged_in_successfully(String str1) throws InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(Homepage.profileIcon()));
-        js.executeScript("arguments[0].click();", Homepage.profileIcon());
+        jse.executeScript("arguments[0].click();", Homepage.profileIcon());
         wait.until(ExpectedConditions.elementToBeClickable(Homepage.loggedInRmnInfo()));
         Assert.assertEquals(Homepage.loggedInRmnInfo().getText(), "+91 " + str1);
-
     }
 
     @After
-    public void closure() {
+    public void closure() throws Throwable {
         super.tearDown();
     }
 }
