@@ -11,9 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DataTableDemonstration extends BaseTest {
 
@@ -38,6 +36,7 @@ public class DataTableDemonstration extends BaseTest {
         driver.findElement(By.id("DateofBirth")).sendKeys(data.get(0).get("DOB"));
         driver.findElement(By.id("Address")).sendKeys(data.get(0).get("Address"));
         driver.findElement(By.id("pincode")).sendKeys(data.get(0).get("PinCode"));
+
     }
 
 }

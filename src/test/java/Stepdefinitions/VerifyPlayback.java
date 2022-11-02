@@ -18,6 +18,7 @@ public class VerifyPlayback extends BaseTest {
     public void clickOnPlayCTA() throws Throwable{
 
         AssetPIPage.playCTA().click();
+        AssetPIPage.hotstarproceedCTA().submit();
         Thread.sleep(20000);
     }
 }

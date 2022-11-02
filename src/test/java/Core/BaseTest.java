@@ -37,7 +37,7 @@ public class BaseTest {
         TataplayBinge tataplayBinge = new TataplayBinge(driver);
         jse = (JavascriptExecutor) driver;
         System.out.println(now);
-        wait = new WebDriverWait(driver, 30);
+        wait = new WebDriverWait(driver, 15);
         actions = new Actions(driver);
         jse = (JavascriptExecutor) driver;
     }

@@ -14,7 +14,7 @@ import java.util.Properties;
 
 public class ThreadLocalDriver {
 
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     static String broserName = "chrome";
 
     public ThreadLocalDriver() throws FileNotFoundException {

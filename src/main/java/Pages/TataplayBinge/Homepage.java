@@ -99,4 +99,10 @@ public class Homepage {
         return asset;
     }
 
+    @FindAll(@FindBy(xpath = "(//*[contains(text(),'My Plan')])[1]"))
+    private static WebElement myPlanText;
+
+    public static WebElement myPlanText(){
+        return myPlanText;
+    }
 }

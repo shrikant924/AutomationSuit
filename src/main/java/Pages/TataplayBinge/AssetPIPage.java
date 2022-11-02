@@ -22,4 +22,12 @@ public class AssetPIPage {
         return playCTA;
     }
 
+    @FindAll(@FindBy(xpath = "(//button)[4]"))
+    private static WebElement hotstarproceedCTA;
+
+    public static WebElement hotstarproceedCTA(){
+        return hotstarproceedCTA;
+    }
+
+
 }

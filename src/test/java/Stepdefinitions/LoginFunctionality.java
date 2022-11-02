@@ -7,16 +7,10 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.IOException;
-import java.time.Duration;
 
 public class LoginFunctionality extends BaseTest {
 
@@ -43,33 +37,60 @@ public class LoginFunctionality extends BaseTest {
 
             }
 
+            try {
+
+                if (Homepage.myPlanText()==null) {
+                    wait.until(ExpectedConditions.elementToBeClickable(Homepage.profileIcon()));
+                    jse.executeScript("arguments[0].click();", Homepage.profileIcon());
+                    wait.until(ExpectedConditions.elementToBeClickable(Homepage.loginCTA()));
+                    jse.executeScript("arguments[0].click();", Homepage.loginCTA());
+                }
+            } catch (Exception e) {
+            }
+
         }
-        wait.until(ExpectedConditions.elementToBeClickable(Homepage.profileIcon()));
-        jse.executeScript("arguments[0].click();", Homepage.profileIcon());
-
-
-        wait.until(ExpectedConditions.elementToBeClickable(Homepage.loginCTA()));
-        jse.executeScript("arguments[0].click();", Homepage.loginCTA());
 
 
     }
 
     @Then("enter <{string}> and <{string}>")
     public void enter_and(String str1, String str2) throws InterruptedException {
-        wait.until(ExpectedConditions.visibilityOf(Homepage.rmnInputField()));
-        Homepage.rmnInputField().sendKeys(str1);
-        wait.until(ExpectedConditions.elementToBeClickable(Homepage.getOtpCta()));
-        Homepage.getOtpCta().click();
-        wait.until(ExpectedConditions.visibilityOf(Homepage.otpInputField()));
-        Homepage.otpInputField().sendKeys(str2);
+        {
+            try {
+
+                if (Homepage.myPlanText().equals(null)) {
+                    wait.until(ExpectedConditions.visibilityOf(Homepage.rmnInputField()));
+                    Homepage.rmnInputField().sendKeys(str1);
+                    wait.until(ExpectedConditions.elementToBeClickable(Homepage.getOtpCta()));
+                    Homepage.getOtpCta().click();
+                    wait.until(ExpectedConditions.visibilityOf(Homepage.otpInputField()));
+                    Homepage.otpInputField().sendKeys(str2);
+                }
+            } catch (Exception e) {
+
+            }
+
+        }
+
+
     }
 
     @And("verify user is logged in successfully <{string}>")
     public void verify_user_is_logged_in_successfully(String str1) throws InterruptedException {
-        wait.until(ExpectedConditions.elementToBeClickable(Homepage.profileIcon()));
-        jse.executeScript("arguments[0].click();", Homepage.profileIcon());
-        wait.until(ExpectedConditions.elementToBeClickable(Homepage.loggedInRmnInfo()));
-        Assert.assertEquals(Homepage.loggedInRmnInfo().getText(), "+91 " + str1);
+        {
+            try {
+
+                if (Homepage.myPlanText().equals(null)) {
+                    wait.until(ExpectedConditions.elementToBeClickable(Homepage.profileIcon()));
+                    jse.executeScript("arguments[0].click();", Homepage.profileIcon());
+                    wait.until(ExpectedConditions.elementToBeClickable(Homepage.loggedInRmnInfo()));
+                    Assert.assertEquals(Homepage.loggedInRmnInfo().getText(), "+91 " + str1);
+                }
+            } catch (Exception e) {
+
+            }
+        }
+
     }
 
     @After
